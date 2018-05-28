@@ -211,14 +211,7 @@ modelGLM_scaled <- train(array_scaled,as.factor(array.key$subtype), method = "gl
 
 # test final datasets ---------------------------------------------------
 
-rowmed <- apply(rnaseq,2,median)
-
-rnaseq_mc <- sweep(rnaseq,2,rowmed,"-")
-
 colnames(rnaseq_tdm_scaled) = colnames(rnaseq)
-
-rnaseq_mc_scaled = scale_bygene(rnaseq_mc)
-
 
 save.image("FSQN_fullcode_BRCA_results.Rdata")
 
