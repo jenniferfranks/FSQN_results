@@ -134,13 +134,13 @@ rnaseq_scaled <- scale_bygene(rnaseq)
 
 
 #test the batch bias before normalizaing ------------------
-together <- rbind(rnaseq_mc_scaled, array_scaled)
+together <- rbind(rnaseq, array)
 together1 <- rbind(matrix(1, nrow=nrow(rnaseq)), matrix(2, nrow=nrow(array)))
 library(gPCA)
 bd.results <- gPCA.batchdetect(together, together1)
 print(paste("p-value =", bd.results$p.val))
 PCplot(bd.results, ug="unguided", type="comp", npcs=3)
-ks.test(rnaseq_mc, array)
+ks.test(rnaseq, array)
 
 # then quantile normalize ---------------
 fsqn <- function(to_normalize, target_dist){
